@@ -1,10 +1,14 @@
 import re
 import os
+import nltk
 from bs4 import BeautifulSoup
 import distance
 from fuzzywuzzy import fuzz
 import pickle
 import numpy as np
+
+nltk.download('stopwords', quiet=True)
+from nltk.corpus import stopwords
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -25,9 +29,7 @@ def test_total_words(q1,q2):
 def test_fetch_token_features(q1, q2):
     SAFE_DIV = 0.0001
 
-    from nltk.corpus import stopwords
     STOP_WORDS = set(stopwords.words('english'))
-
     token_features = [0.0] * 8
 
     # Converting the Sentence into Tokens:
