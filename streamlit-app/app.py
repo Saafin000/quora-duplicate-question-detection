@@ -1,8 +1,10 @@
 import streamlit as st
 import helper
 import pickle
+import os
 
-model = pickle.load(open('model.pkl','rb'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = pickle.load(open(os.path.join(BASE_DIR, 'model.pkl'), 'rb'))
 
 st.header('Duplicate Question Pairs')
 

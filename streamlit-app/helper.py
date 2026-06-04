@@ -1,11 +1,14 @@
 import re
+import os
 from bs4 import BeautifulSoup
 import distance
 from fuzzywuzzy import fuzz
 import pickle
 import numpy as np
 
-cv = pickle.load(open('cv.pkl','rb'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+cv = pickle.load(open(os.path.join(BASE_DIR, 'cv.pkl'), 'rb'))
 
 
 def test_common_words(q1,q2):
